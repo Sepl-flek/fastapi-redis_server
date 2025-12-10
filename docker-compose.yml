@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    container_name: phone_api
+    ports:
+      - "8000:8000"
+    environment:
+      REDIS_HOST: redis
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    container_name: redis_async
+    ports:
+      - "6379:6379"
